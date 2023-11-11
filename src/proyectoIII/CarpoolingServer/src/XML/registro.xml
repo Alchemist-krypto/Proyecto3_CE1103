@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><root>
+    
+<Empleado ID="9090"><nombre>Gabriel</nombre><direccion>cartago</direccion><Condicion>driver</Condicion>
+</Empleado><Empleado ID="bik"><nombre>popo</nombre><direccion>ggg</direccion><Condicion>driver</Condicion>
+</Empleado></root>

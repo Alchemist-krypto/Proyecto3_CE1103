@@ -77,6 +77,7 @@ public class Inicio extends javax.swing.JFrame {
         MostrarCaminos = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ImgMapa = new javax.swing.JLabel();
+        CalificacionesBoton = new javax.swing.JButton();
         EleccionDestino = new javax.swing.JComboBox<>();
         BuscarCamino = new javax.swing.JButton();
         EleccionOrigen = new javax.swing.JComboBox<>();
@@ -117,7 +118,15 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ImgMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mapa.jpeg"))); // NOI18N
-        jPanel1.add(ImgMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(-290, 0, 1760, 1030));
+        jPanel1.add(ImgMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(-290, 60, 1760, 970));
+
+        CalificacionesBoton.setText("Calificar");
+        CalificacionesBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CalificacionesBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CalificacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 80, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 850, 690));
 
@@ -476,8 +485,6 @@ public class Inicio extends javax.swing.JFrame {
         MostrarCaminos.setEnabled(false);
         MostrarCaminos.setVisible(false);
 
-        
-
         // Se crea la matriz con las ubicaciones fijas para cada nodo
         int Matriz[][] = {
             // 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
@@ -546,6 +553,10 @@ public class Inicio extends javax.swing.JFrame {
         PintarFiguras(Numerotope, arboles);
     }//GEN-LAST:event_MostrarCaminosActionPerformed
 
+    private void CalificacionesBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalificacionesBotonActionPerformed
+        Calificaciones.main(new String[]{});
+    }//GEN-LAST:event_CalificacionesBotonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -572,6 +583,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonSalir;
     private javax.swing.JButton BuscarCamino;
+    private javax.swing.JButton CalificacionesBoton;
     private javax.swing.JComboBox<String> EleccionDestino;
     private javax.swing.JComboBox<String> EleccionOrigen;
     private javax.swing.JLabel Fondo;
