@@ -76,6 +76,10 @@ public class XML {
         Element CondicionElement = document.createElement("Condicion");
         CondicionElement.appendChild(document.createTextNode(Condicion));
         empleadoElement.appendChild(CondicionElement);
+        
+        Element CalificacionElement = document.createElement("Calificacion");
+        CalificacionElement.appendChild(document.createTextNode("0"));
+        empleadoElement.appendChild(CalificacionElement);
 
         // Agregar un salto de línea al final del elemento Empleado
         empleadoElement.appendChild(document.createTextNode("\n"));
@@ -105,35 +109,59 @@ public class XML {
         transformer.transform(source, result);
     }
     
-        public static String obtenerNombrePorID(String ID) {
-        try {
-            // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\XML\\registro.xml");
+       public static String calificar(String ID,String Cal) {
+    try {
+        // Cargar el documento XML desde un archivo
+        Document document = cargarDesdeArchivo("src\\XML\\registro.xml");
 
-            // Verificar que el documento no sea nulo antes de continuar
-            if (document != null) {
-                // Buscar el elemento Empleado con el ID proporcionado
-                NodeList empleados = document.getElementsByTagName("Empleado");
-                for (int i = 0; i < empleados.getLength(); i++) {
-                    Node empleado = empleados.item(i);
-                    if (empleado.getNodeType() == Node.ELEMENT_NODE) {
-                        Element empleadoElement = (Element) empleado;
-                        String empleadoID = empleadoElement.getAttribute("ID");
-                        if (empleadoID.equals(ID)) {
-                            // Encontrado el empleado con el ID, devolver el nombre
-                            return obtenerTextoDeElemento(empleadoElement, "nombre");
+        // Verificar que el documento no sea nulo antes de continuar
+        if (document != null) {
+            // Buscar el elemento Empleado con el ID proporcionado
+            NodeList empleados = document.getElementsByTagName("Empleado");
+            for (int i = 0; i < empleados.getLength(); i++) {
+                Node empleado = empleados.item(i);
+                if (empleado.getNodeType() == Node.ELEMENT_NODE) {
+                    Element empleadoElement = (Element) empleado;
+                    String empleadoID = empleadoElement.getAttribute("ID");
+                    if (empleadoID.equals(ID)) {
+                        // Encontrado el empleado con el ID, obtener el nombre
+                        String nombre = obtenerTextoDeElemento(empleadoElement, "Calificacion");
+
+                        // Concatenar "1" al nombre
+                        if (nombre != null) {
+                            String nuevoNombre = Integer.toString(Integer.parseInt(nombre) + Integer.parseInt(Cal));
+
+                            // Modificar el elemento nombre en el XML
+                            NodeList nombreNodeList = empleadoElement.getElementsByTagName("Calificacion");
+                            if (nombreNodeList.getLength() > 0) {
+                                Node nombreNode = nombreNodeList.item(0);
+                                nombreNode.setTextContent(nuevoNombre);
+                                // Guardar el documento XML modificado
+                                guardarComoArchivo(document, "src\\XML\\registro.xml");
+
+                                System.out.println("Nombre modificado en el XML: " + nuevoNombre);
+                            } else {
+                                System.out.println("Elemento 'nombre' no encontrado para el ID: " + ID);
+                            }
+
+                            return nuevoNombre;
+                        } else {
+                            System.out.println("Nombre no encontrado para el ID: " + ID);
                         }
                     }
                 }
-                System.out.println("Empleado no encontrado para el ID: " + ID);
-            } else {
-                System.out.println("Error cargando el documento XML.");
             }
-
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
+            System.out.println("Empleado no encontrado para el ID: " + ID);
+        } else {
+            System.out.println("Error cargando el documento XML.");
         }
-        return null;
+
+    } catch (ParserConfigurationException | TransformerException e) {
+        e.printStackTrace();
+    }
+    return null;
+
+
     }
 
     private static String obtenerTextoDeElemento(Element element, String tagName) {
