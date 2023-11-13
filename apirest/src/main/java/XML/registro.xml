@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><root>
     
-<Empleado><ID>1287</ID><nombre>Gabriel</nombre><direccion>dsd</direccion><Condicion>driver</Condicion><Calificacion>3</Calificacion>
+<Empleado><ID>1287</ID><nombre>Gabriel</nombre><direccion>dsd</direccion><Condicion>driver</Condicion><Calificacion>5</Calificacion>
 </Empleado><Empleado><ID>12344</ID><nombre>pepe</nombre><direccion>san jose</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
+</Empleado><Empleado><ID>1212</ID><nombre>juan</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>3</Calificacion>
+</Empleado><Empleado><ID>1213</ID><nombre>jose</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>10</Calificacion>
+</Empleado><Empleado><ID>1214</ID><nombre>luis</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>100</Calificacion>
+</Empleado><Empleado><ID>1215</ID><nombre>pan</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>10022</Calificacion>
 </Empleado></root>

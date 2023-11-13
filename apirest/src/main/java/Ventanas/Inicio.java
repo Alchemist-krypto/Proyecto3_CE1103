@@ -7,11 +7,12 @@ import javax.swing.JOptionPane;
 
 import java.util.Random;
 
-
 /**
  * Clase que representa la ventana principal de la aplicación.
- * Contiene métodos para pintar figuras en un JPanel y gestiona la inicialización de la interfaz gráfica.
- * La interfaz incluye opciones para seleccionar nodos de origen y destino, y buscar caminos en un grafo.
+ * Contiene métodos para pintar figuras en un JPanel y gestiona la
+ * inicialización de la interfaz gráfica.
+ * La interfaz incluye opciones para seleccionar nodos de origen y destino, y
+ * buscar caminos en un grafo.
  * 
  * @author Fabricio Mena Mejia
  */
@@ -24,9 +25,10 @@ public class Inicio extends javax.swing.JFrame {
     DatosGraficos arboles = new DatosGraficos();
 
     /**
-     * Pinta las figuras gráficas (líneas y círculos) en un JPanel en base a la información del grafo.
+     * Pinta las figuras gráficas (líneas y círculos) en un JPanel en base a la
+     * información del grafo.
      * 
-     * @param tope Número total de nodos.
+     * @param tope    Número total de nodos.
      * @param arboles Objeto DatosGraficos que contiene la información del grafo.
      */
     public static void PintarFiguras(int tope, DatosGraficos arboles) {
@@ -35,30 +37,29 @@ public class Inicio extends javax.swing.JFrame {
             for (int k = 0; k < tope; k++) {
                 if (arboles.getmAdyacencia(j, k) == 1) {
                     PintanrDibujos.pinta_Linea(
-                        jPanel1.getGraphics(),
-                        arboles.getCordeX(j),
-                        arboles.getCordeY(j),
-                        arboles.getCordeX(k),
-                        arboles.getCordeY(k),
-                        arboles.getmCoeficiente(j, k)
-                    );
+                            jPanel1.getGraphics(),
+                            arboles.getCordeX(j),
+                            arboles.getCordeY(j),
+                            arboles.getCordeX(k),
+                            arboles.getCordeY(k),
+                            arboles.getmCoeficiente(j, k));
                 }
             }
         }
-        
+
         // Pinta círculos en las posiciones de los nodos y muestra sus nombres.
         for (int j = 0; j < tope; j++) {
             PintanrDibujos.pinta_Circulo(
-                jPanel1.getGraphics(),
-                arboles.getCordeX(j),
-                arboles.getCordeY(j),
-                arboles.getNombre(j)
-            );
+                    jPanel1.getGraphics(),
+                    arboles.getCordeX(j),
+                    arboles.getCordeY(j),
+                    arboles.getNombre(j));
         }
     }
 
     /**
-     * Constructor de la clase Inicio. Inicializa los componentes de la interfaz gráfica.
+     * Constructor de la clase Inicio. Inicializa los componentes de la interfaz
+     * gráfica.
      * Configura opciones iniciales, como la inhabilitación de ciertos controles.
      */
     public Inicio() {
@@ -69,15 +70,16 @@ public class Inicio extends javax.swing.JFrame {
         BuscarCamino.setEnabled(false);
     }
 
-
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         MostrarCaminos = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ImgMapa = new javax.swing.JLabel();
         CalificacionesBoton = new javax.swing.JButton();
+        TopBoton = new javax.swing.JButton();
         EleccionDestino = new javax.swing.JComboBox<>();
         BuscarCamino = new javax.swing.JButton();
         EleccionOrigen = new javax.swing.JComboBox<>();
@@ -126,14 +128,25 @@ public class Inicio extends javax.swing.JFrame {
                 CalificacionesBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(CalificacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 80, 40));
+        jPanel1.add(CalificacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 80, 40));
+
+        TopBoton.setText("Top 5");
+        TopBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TopBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TopBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 80, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 850, 690));
 
         EleccionDestino.setBackground(new java.awt.Color(0, 153, 51));
         EleccionDestino.setFont(new java.awt.Font("Recinto", 1, 18));
         EleccionDestino.setForeground(new java.awt.Color(0, 0, 153));
-        EleccionDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  "Recinto", "Nodo 1", "Nodo 2", "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12", "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21", "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29"}));
+        EleccionDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recinto", "Nodo 1", "Nodo 2",
+                "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12",
+                "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21",
+                "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29" }));
         EleccionDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EleccionDestinoActionPerformed(evt);
@@ -155,7 +168,10 @@ public class Inicio extends javax.swing.JFrame {
         EleccionOrigen.setBackground(new java.awt.Color(0, 153, 51));
         EleccionOrigen.setFont(new java.awt.Font("Recinto", 1, 18));
         EleccionOrigen.setForeground(new java.awt.Color(0, 0, 153));
-        EleccionOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  "Recinto", "Nodo 1", "Nodo 2", "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12", "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21", "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29"}));
+        EleccionOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recinto", "Nodo 1", "Nodo 2",
+                "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12",
+                "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21",
+                "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29" }));
         EleccionOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EleccionOrigenActionPerformed(evt);
@@ -247,7 +263,8 @@ public class Inicio extends javax.swing.JFrame {
         txtColorNodoRecorrido.setForeground(new java.awt.Color(51, 0, 204));
         txtColorNodoRecorrido.setText("Nodo Recorrido ---->");
         txtColorNodoRecorrido.setOpaque(true);
-        getContentPane().add(txtColorNodoRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 330, 40));
+        getContentPane().add(txtColorNodoRecorrido,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 330, 40));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 153));
         Fondo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -271,15 +288,15 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EleccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionDestinoActionPerformed
+    private void EleccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EleccionDestinoActionPerformed
         BuscarCamino.setEnabled(true);
-    }//GEN-LAST:event_EleccionDestinoActionPerformed
+    }// GEN-LAST:event_EleccionDestinoActionPerformed
 
-    private void EleccionOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionOrigenActionPerformed
+    private void EleccionOrigenActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EleccionOrigenActionPerformed
         EleccionDestino.setEnabled(true);
-    }//GEN-LAST:event_EleccionOrigenActionPerformed
+    }// GEN-LAST:event_EleccionOrigenActionPerformed
 
-    private void BuscarCaminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCaminoActionPerformed
+    private void BuscarCaminoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BuscarCaminoActionPerformed
         int origen = 0, destino = 0;
         String nombreOrigen, nombreDestino;
         nombreOrigen = (String) EleccionOrigen.getSelectedItem();
@@ -465,59 +482,60 @@ public class Inicio extends javax.swing.JFrame {
         }
         if ("Nodo 29".equals(nombreDestino)) {
             destino = 29;
-        }        
-        if (origen == destino) {          
+        }
+        if (origen == destino) {
             JOptionPane.showMessageDialog(null, "Estas en:" + nombreOrigen);
         } else {
             AlgoritmoDijkstra Dijkstra = new AlgoritmoDijkstra(arboles, Numerotope, origen, destino);
             Dijkstra.dijkstra();
             kmRecorridos.setText(Dijkstra.getAcumulado() + "segundos");
         }
-    }//GEN-LAST:event_BuscarCaminoActionPerformed
+    }// GEN-LAST:event_BuscarCaminoActionPerformed
 
-    private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
-        System.exit(0);        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonSalirActionPerformed
+    private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BotonSalirActionPerformed
+        System.exit(0); // TODO add your handling code here:
+    }// GEN-LAST:event_BotonSalirActionPerformed
 
-    private void MostrarCaminosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarCaminosActionPerformed
-        //jMenuItem2.setEnabled(false);
+    private void MostrarCaminosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MostrarCaminosActionPerformed
+        // jMenuItem2.setEnabled(false);
         EleccionOrigen.setEnabled(true);
         MostrarCaminos.setEnabled(false);
         MostrarCaminos.setVisible(false);
 
         // Se crea la matriz con las ubicaciones fijas para cada nodo
         int Matriz[][] = {
-            // 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
-            {0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},//1
-            {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0},//2
-            {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0},//3
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},//4
-            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},//5
-            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},//6
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//7
-            {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//8
-            {0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},//9
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//10
-            {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0},//11
-            {0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//12
-            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//13
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},//14
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//15
-            {0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//16
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},//17
-            {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//18
-            {0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0},//19
-            {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},//20
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//21
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//22
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},//23
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},//24
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//25
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0},//26
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0},//27
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0},//28
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0},//29
-            {0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}//30
+                // 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+                // 30
+                { 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 }, // 1
+                { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 }, // 2
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 }, // 3
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // 5
+                { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+                { 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 }, // 9
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+                { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0 }, // 11
+                { 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+                { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 }, // 14
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+                { 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // 17
+                { 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 18
+                { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0 }, // 19
+                { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 }, // 20
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 21
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 22
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 }, // 23
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 }, // 24
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 25
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0 }, // 26
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 }, // 27
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0 }, // 28
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0 }, // 29
+                { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 }// 30
         };
 
         // Se crea la matriz con los tiempos aleatorios
@@ -530,18 +548,23 @@ public class Inicio extends javax.swing.JFrame {
         }
 
         // Se define la posicion en x de cada nodo
-        int xx1[] = {425, 375, 280, 540, 440, 425, 275, 260, 350, 170, 600, 450, 470, 160, 140, 315, 110, 375, 220, 190, 200, 525, 400,100,109,230,210,170,150,300,230};
+        int xx1[] = { 425, 375, 280, 540, 440, 425, 275, 260, 350, 170, 600, 450, 470, 160, 140, 315, 110, 375, 220,
+                190, 200, 525, 400, 100, 109, 230, 210, 170, 150, 300, 230 };
         // Se define la posicion en y de cada nodo
-        int yy1[] = {405, 485, 540, 550, 185, 530, 430, 630, 550, 370, 425, 550, 615, 520, 585, 565, 480, 630, 535, 605, 510, 485, 400,200,130,270,210,110,180,100,160};
+        int yy1[] = { 405, 485, 540, 550, 185, 530, 430, 630, 550, 370, 425, 550, 615, 520, 585, 565, 480, 630, 535,
+                605, 510, 485, 400, 200, 130, 270, 210, 110, 180, 100, 160 };
         // Se definen los nombres de cada nodo
-        String nom[] = {"Recinto", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22","23","24","25","26","27","28","29"};
-        // Se configuran las posiciones (x, y) y nombres de los nodos en el objeto 'arboles'.
+        String nom[] = { "Recinto", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29" };
+        // Se configuran las posiciones (x, y) y nombres de los nodos en el objeto
+        // 'arboles'.
         for (int j = 0; j < 30; j++) {
             arboles.setCordeX(j, xx1[j]);
             arboles.setCordeY(j, yy1[j]);
             arboles.setNombre(j, nom[j]);
         }
-        // Establece la relacion entre los valores de adyacencia y peso en el objeto 'arboles'
+        // Establece la relacion entre los valores de adyacencia y peso en el objeto
+        // 'arboles'
         for (int j = 0; j < 30; j++) {
             for (int k = 0; k < 30; k++) {
                 arboles.setmAdyacencia(j, k, Matriz[j][k]);
@@ -551,17 +574,26 @@ public class Inicio extends javax.swing.JFrame {
         // Numero maximo de elementos de la matriz
         Numerotope = 30;
         PintarFiguras(Numerotope, arboles);
-    }//GEN-LAST:event_MostrarCaminosActionPerformed
+    }// GEN-LAST:event_MostrarCaminosActionPerformed
 
-    private void CalificacionesBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalificacionesBotonActionPerformed
-        Calificaciones.main(new String[]{});
-    }//GEN-LAST:event_CalificacionesBotonActionPerformed
+    private void CalificacionesBotonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CalificacionesBotonActionPerformed
+        Calificaciones.main(new String[] {});
+    }// GEN-LAST:event_CalificacionesBotonActionPerformed
+
+    private void TopBotonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TopBotonActionPerformed
+        Top5.main(new String[] {});
+
+    }// GEN-LAST:event_TopBotonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -570,7 +602,8 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
@@ -593,6 +626,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel LateralSuperior2;
     private javax.swing.JLabel LateralSuperior3;
     private javax.swing.JButton MostrarCaminos;
+    private javax.swing.JButton TopBoton;
     private javax.swing.JLabel colorDestino;
     private javax.swing.JLabel colorNodoVisitado;
     private javax.swing.JLabel colorOrigen;

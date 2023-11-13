@@ -1,5 +1,10 @@
 package Clases;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -127,7 +132,8 @@ public class XML {
                     Node empleado = empleados.item(i);
                     if (empleado.getNodeType() == Node.ELEMENT_NODE) {
                         Element empleadoElement = (Element) empleado;
-                        String empleadoID = obtenerTextoDeEtiqueta("ID");
+                        String empleadoID = obtenerTextoDeElemento(empleadoElement, "ID");
+
                         if (empleadoID.equals(ID)) {
                             // Encontrado el empleado con el ID, obtener el nombre
                             String nombre = obtenerTextoDeElemento(empleadoElement, "Calificacion");
@@ -206,4 +212,98 @@ public class XML {
         return null;
     }
 
+    public static List<String> obtenerTop5Nombres() {
+        try {
+            // Cargar el documento XML desde un archivo
+            Document document = cargarDesdeArchivo("apirest\\src\\main\\java\\XML\\registro.xml");
+
+            // Verificar que el documento no sea nulo antes de continuar
+            if (document != null) {
+                // Obtener la lista de empleados
+                NodeList empleados = document.getElementsByTagName("Empleado");
+
+                // Crear una lista para almacenar objetos Empleado con ID y Calificacion
+                List<Empleado> listaEmpleados = new ArrayList<>();
+
+                // Iterar sobre los empleados y agregarlos a la lista
+                for (int i = 0; i < empleados.getLength(); i++) {
+                    Node empleado = empleados.item(i);
+                    if (empleado.getNodeType() == Node.ELEMENT_NODE) {
+                        Element empleadoElement = (Element) empleado;
+                        String empleadoID = obtenerTextoDeElemento(empleadoElement, "ID");
+                        String calificacion = obtenerTextoDeElemento(empleadoElement, "Calificacion");
+
+                        // Agregar el empleado a la lista
+                        listaEmpleados.add(new Empleado(empleadoID, calificacion));
+                    }
+                }
+
+                // Ordenar la lista de empleados por calificación en orden descendente
+                Collections.sort(listaEmpleados,
+                        Comparator.comparing(Empleado::getCalificacion, Comparator.reverseOrder()));
+
+                // Crear una lista para almacenar los nombres de los 5 empleados con mayor
+                // calificación
+                List<String> top5Nombres = new ArrayList<>();
+
+                // Obtener los nombres de los 5 empleados con mayor calificación
+                int count = 0;
+                for (Empleado emp : listaEmpleados) {
+                    top5Nombres.add(obtenerNombrePorID(emp.getID(), document));
+                    count++;
+                    if (count == 5) {
+                        break; // Salir después de obtener los 5 primeros
+                    }
+                }
+
+                // Devolver la lista de nombres
+                return top5Nombres;
+
+            } else {
+                System.out.println("Error cargando el documento XML.");
+            }
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private static String obtenerNombrePorID(String ID, Document document) {
+        NodeList empleados = document.getElementsByTagName("Empleado");
+
+        for (int i = 0; i < empleados.getLength(); i++) {
+            Node empleado = empleados.item(i);
+            if (empleado.getNodeType() == Node.ELEMENT_NODE) {
+                Element empleadoElement = (Element) empleado;
+                String empleadoID = obtenerTextoDeElemento(empleadoElement, "ID");
+
+                if (empleadoID.equals(ID)) {
+                    // Encontrado el empleado con el ID, obtener el nombre
+                    return obtenerTextoDeElemento(empleadoElement, "nombre");
+                }
+            }
+        }
+
+        return null; // Si no se encuentra el nombre para el ID
+    }
+
+    private static class Empleado {
+        private String ID;
+        private String calificacion;
+
+        public Empleado(String ID, String calificacion) {
+            this.ID = ID;
+            this.calificacion = calificacion;
+        }
+
+        public String getID() {
+            return ID;
+        }
+
+        public String getCalificacion() {
+            return calificacion;
+        }
+    }
 }
