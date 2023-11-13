@@ -19,7 +19,9 @@ public class XML {
     public static void EscribeXML(String nombre, String ID, String direccion, String Condicion) {
         try {
             // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\XML\\registro.xml");
+            Document document = cargarDesdeArchivo(
+                    "apirest\\src\\main\\java\\XML\\registro.xml\n" + //
+                            "");
 
             // Check if the document is not null before proceeding
             if (document != null) {
@@ -30,7 +32,8 @@ public class XML {
                 imprimirDocumento(document);
 
                 // Guardar el documento XML modificado
-                guardarComoArchivo(document, "src\\XML\\registro.xml");
+                guardarComoArchivo(document,
+                        "apirest\\src\\main\\java\\XML\\registro.xml");
 
                 System.out.println("Documento XML modificado exitosamente.");
             } else {
@@ -62,7 +65,9 @@ public class XML {
         rootElement.appendChild(empleadoElement);
 
         // Configurar el atributo 'ID'
-        empleadoElement.setAttribute("ID", id);
+        Element IDElement = document.createElement("ID");
+        IDElement.appendChild(document.createTextNode(id));
+        empleadoElement.appendChild(IDElement);
 
         // Crear elementos secundarios
         Element nombreElement = document.createElement("nombre");
@@ -76,6 +81,10 @@ public class XML {
         Element CondicionElement = document.createElement("Condicion");
         CondicionElement.appendChild(document.createTextNode(Condicion));
         empleadoElement.appendChild(CondicionElement);
+
+        Element CalificacionElement = document.createElement("Calificacion");
+        CalificacionElement.appendChild(document.createTextNode("0"));
+        empleadoElement.appendChild(CalificacionElement);
 
         // Agregar un salto de línea al final del elemento Empleado
         empleadoElement.appendChild(document.createTextNode("\n"));
@@ -104,11 +113,11 @@ public class XML {
         StreamResult result = new StreamResult(filePath);
         transformer.transform(source, result);
     }
-    
-        public static String obtenerNombrePorID(String ID) {
+
+    public static String calificar(String ID, String Cal) {
         try {
             // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\XML\\registro.xml");
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
             // Verificar que el documento no sea nulo antes de continuar
             if (document != null) {
@@ -118,10 +127,33 @@ public class XML {
                     Node empleado = empleados.item(i);
                     if (empleado.getNodeType() == Node.ELEMENT_NODE) {
                         Element empleadoElement = (Element) empleado;
-                        String empleadoID = empleadoElement.getAttribute("ID");
+                        String empleadoID = obtenerTextoDeEtiqueta("ID");
                         if (empleadoID.equals(ID)) {
-                            // Encontrado el empleado con el ID, devolver el nombre
-                            return obtenerTextoDeElemento(empleadoElement, "nombre");
+                            // Encontrado el empleado con el ID, obtener el nombre
+                            String nombre = obtenerTextoDeElemento(empleadoElement, "Calificacion");
+
+                            // Concatenar "1" al nombre
+                            if (nombre != null) {
+                                String nuevoNombre = Integer.toString(Integer.parseInt(nombre) + Integer.parseInt(Cal));
+
+                                // Modificar el elemento nombre en el XML
+                                NodeList nombreNodeList = empleadoElement.getElementsByTagName("Calificacion");
+                                if (nombreNodeList.getLength() > 0) {
+                                    Node nombreNode = nombreNodeList.item(0);
+                                    nombreNode.setTextContent(nuevoNombre);
+                                    // Guardar el documento XML modificado
+                                    guardarComoArchivo(document,
+                                            "apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
+
+                                    System.out.println("Nombre modificado en el XML: " + nuevoNombre);
+                                } else {
+                                    System.out.println("Elemento 'nombre' no encontrado para el ID: " + ID);
+                                }
+
+                                return nuevoNombre;
+                            } else {
+                                System.out.println("Nombre no encontrado para el ID: " + ID);
+                            }
                         }
                     }
                 }
@@ -130,10 +162,11 @@ public class XML {
                 System.out.println("Error cargando el documento XML.");
             }
 
-        } catch (ParserConfigurationException e) {
+        } catch (ParserConfigurationException | TransformerException e) {
             e.printStackTrace();
         }
         return null;
+
     }
 
     private static String obtenerTextoDeElemento(Element element, String tagName) {
@@ -145,4 +178,32 @@ public class XML {
             return null;
         }
     }
+
+    // ... (otras funciones de la clase)
+
+    public static String obtenerTextoDeEtiqueta(String tagName) {
+        try {
+            // Cargar el documento XML desde un archivo
+            Document document = cargarDesdeArchivo("apirest\\src\\main\\java\\XML\\registro.xml\n" + //
+                    "");
+
+            // Verificar que el documento no sea nulo antes de continuar
+            if (document != null) {
+                NodeList nodeList = document.getElementsByTagName(tagName);
+                if (nodeList.getLength() > 0) {
+                    Node node = nodeList.item(0);
+                    return node.getTextContent();
+                } else {
+                    System.out.println("Etiqueta '" + tagName + "' no encontrada en el XML.");
+                }
+            } else {
+                System.out.println("Error cargando el documento XML.");
+            }
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

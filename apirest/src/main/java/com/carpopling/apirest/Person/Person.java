@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,9 +18,9 @@ import lombok.NoArgsConstructor;
 public class Person {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer id = Integer.parseInt(Clases.XML.obtenerTextoDeEtiqueta("ID"));
     @Basic
-    private String nombre;
-    private String direccion;
-    private String condicion;
+    private String nombre = Clases.XML.obtenerTextoDeEtiqueta("nombre");
+    private String direccion = Clases.XML.obtenerTextoDeEtiqueta("direccion");
+    private String condicion = Clases.XML.obtenerTextoDeEtiqueta("Condicion");
 }

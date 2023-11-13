@@ -29,7 +29,7 @@ public class Calificaciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         BotonRegistro = new javax.swing.JButton();
         NombreTexto = new javax.swing.JTextField();
-        NombreTexto1 = new javax.swing.JTextField();
+        CalificacionTexto = new javax.swing.JTextField();
         label6 = new java.awt.Label();
         label7 = new java.awt.Label();
 
@@ -61,12 +61,12 @@ public class Calificaciones extends javax.swing.JFrame {
             }
         });
 
-        NombreTexto1.setBackground(new java.awt.Color(234, 215, 187));
-        NombreTexto1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        NombreTexto1.setForeground(new java.awt.Color(17, 57, 70));
-        NombreTexto1.addActionListener(new java.awt.event.ActionListener() {
+        CalificacionTexto.setBackground(new java.awt.Color(234, 215, 187));
+        CalificacionTexto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        CalificacionTexto.setForeground(new java.awt.Color(17, 57, 70));
+        CalificacionTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreTexto1ActionPerformed(evt);
+                CalificacionTextoActionPerformed(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class Calificaciones extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(NombreTexto1)
+                    .addComponent(CalificacionTexto)
                     .addComponent(NombreTexto)
                     .addComponent(label6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                     .addComponent(label7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
@@ -111,7 +111,7 @@ public class Calificaciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NombreTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CalificacionTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(BotonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -140,7 +140,7 @@ public class Calificaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonRegistroComponentAdded
 
     private void BotonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistroActionPerformed
-String nombre = Clases.XML.obtenerNombrePorID(NombreTexto.getText());
+String nombre = Clases.XML.calificar(NombreTexto.getText(),CalificacionTexto.getText());
 if (nombre != null) {
     System.out.println("Nombre del empleado: " + nombre);
 } else {
@@ -152,9 +152,9 @@ if (nombre != null) {
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreTextoActionPerformed
 
-    private void NombreTexto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreTexto1ActionPerformed
+    private void CalificacionTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalificacionTextoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NombreTexto1ActionPerformed
+    }//GEN-LAST:event_CalificacionTextoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +193,8 @@ if (nombre != null) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistro;
+    private javax.swing.JTextField CalificacionTexto;
     private javax.swing.JTextField NombreTexto;
-    private javax.swing.JTextField NombreTexto1;
     private javax.swing.JPanel jPanel1;
     private java.awt.Label label6;
     private java.awt.Label label7;
