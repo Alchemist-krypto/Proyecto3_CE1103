@@ -5,6 +5,8 @@
 
 package Ventanas;
 
+import java.util.List;
+
 /**
  *
  * @author ggabr
@@ -187,6 +189,7 @@ public class Top5 extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Top5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -219,10 +222,10 @@ public class Top5 extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public static void PonerNombre() {
-        Chofer1.setText(Clases.XML.obtenerTop5Nombres().get(2));
-        Chofer2.setText(Clases.XML.obtenerTop5Nombres().get(3));
-        Chofer3.setText(Clases.XML.obtenerTop5Nombres().get(4));
-        Chofer4.setText(Clases.XML.obtenerTop5Nombres().get(0));
-        Chofer5.setText(Clases.XML.obtenerTop5Nombres().get(1));
+        Chofer1.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(4));
+        Chofer2.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(3));
+        Chofer3.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(2));
+        Chofer4.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(1));
+        Chofer5.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(0));
     }
 }

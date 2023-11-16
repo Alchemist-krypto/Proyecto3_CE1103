@@ -3,7 +3,9 @@ package Clases;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,7 +20,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.carpopling.apirest.Person.Person;
 
 public class XML {
@@ -27,8 +30,8 @@ public class XML {
         try {
             // Cargar el documento XML desde un archivo
             Document document = cargarDesdeArchivo(
-                    "src\\main\\java\\XML\\registro.xml" + //
-                            "");
+                    "apirest\\src\\main\\java\\XML\\registro.xml" //
+            );
 
             // Check if the document is not null before proceeding
             if (document != null) {
@@ -40,7 +43,7 @@ public class XML {
 
                 // Guardar el documento XML modificado
                 guardarComoArchivo(document,
-                        "src\\main\\java\\XML\\registro.xml");
+                        "apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
                 System.out.println("Documento XML modificado exitosamente.");
             } else {
@@ -51,10 +54,11 @@ public class XML {
             e.printStackTrace();
         }
     }
+
     public static List<Person> obtenerTodosLosEmpleados() {
         try {
             // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\main\\java\\XML\\registro.xml");
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
             // Verificar que el documento no sea nulo antes de continuar
             if (document != null) {
@@ -166,7 +170,7 @@ public class XML {
     public static String calificar(String ID, String Cal) {
         try {
             // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\main\\java\\XML\\registro.xml");
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
             // Verificar que el documento no sea nulo antes de continuar
             if (document != null) {
@@ -193,7 +197,7 @@ public class XML {
                                     nombreNode.setTextContent(nuevoNombre);
                                     // Guardar el documento XML modificado
                                     guardarComoArchivo(document,
-                                            "src\\main\\java\\XML\\registro.xml");
+                                            "apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
                                     System.out.println("Nombre modificado en el XML: " + nuevoNombre);
                                 } else {
@@ -234,7 +238,7 @@ public class XML {
     public static String obtenerTextoDeEtiqueta(String tagName) {
         try {
             // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\main\\java\\XML\\registro.xml" + //
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml" + //
                     "");
 
             // Verificar que el documento no sea nulo antes de continuar
@@ -256,17 +260,17 @@ public class XML {
         return null;
     }
 
-    public static List<String> obtenerTop5Nombres() {
+    public static List<String> obtenerCalificacionesOrdenadas() {
         try {
             // Cargar el documento XML desde un archivo
-            Document document = cargarDesdeArchivo("src\\main\\java\\XML\\registro.xml");
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
             // Verificar que el documento no sea nulo antes de continuar
             if (document != null) {
                 // Obtener la lista de empleados
                 NodeList empleados = document.getElementsByTagName("Empleado");
 
-                // Crear una lista para almacenar objetos Empleado con ID y Calificacion
+                // Crear una lista para almacenar objetos Empleado con Calificacion
                 List<Empleado> listaEmpleados = new ArrayList<>();
 
                 // Iterar sobre los empleados y agregarlos a la lista
@@ -274,34 +278,41 @@ public class XML {
                     Node empleado = empleados.item(i);
                     if (empleado.getNodeType() == Node.ELEMENT_NODE) {
                         Element empleadoElement = (Element) empleado;
-                        String empleadoID = obtenerTextoDeElemento(empleadoElement, "ID");
                         String calificacion = obtenerTextoDeElemento(empleadoElement, "Calificacion");
 
-                        // Agregar el empleado a la lista
-                        listaEmpleados.add(new Empleado(empleadoID, calificacion));
+                        // Agregar la calificación a la lista
+                        listaEmpleados.add(new Empleado(calificacion));
                     }
                 }
 
-                // Ordenar la lista de empleados por calificación en orden descendente
-                Collections.sort(listaEmpleados,
-                        Comparator.comparing(Empleado::getCalificacion, Comparator.reverseOrder()));
+                // Implementar Selection Sort para ordenar la lista de calificaciones en orden
+                // descendente
+                int n = listaEmpleados.size();
+                for (int i = 0; i < n - 1; i++) {
+                    int maxIndex = i;
+                    for (int j = i + 1; j < n; j++) {
+                        if (listaEmpleados.get(j).getCalificacion2()
+                                .compareTo(listaEmpleados.get(maxIndex).getCalificacion2()) > 0) {
+                            maxIndex = j;
+                        }
+                    }
+                    // Intercambiar los elementos
+                    Empleado temp = listaEmpleados.get(maxIndex);
+                    listaEmpleados.set(maxIndex, listaEmpleados.get(i));
+                    listaEmpleados.set(i, temp);
+                }
 
-                // Crear una lista para almacenar los nombres de los 5 empleados con mayor
-                // calificación
-                List<String> top5Nombres = new ArrayList<>();
+                // Crear una lista para almacenar las calificaciones ordenadas
+                List<String> calificacionesOrdenadas = new ArrayList<>();
 
-                // Obtener los nombres de los 5 empleados con mayor calificación
-                int count = 0;
+                // Obtener las calificaciones ordenadas
                 for (Empleado emp : listaEmpleados) {
-                    top5Nombres.add(obtenerNombrePorID(emp.getID(), document));
-                    count++;
-                    if (count == 5) {
-                        break; // Salir después de obtener los 5 primeros
-                    }
+                    calificacionesOrdenadas.add(emp.getCalificacion2());
                 }
-
-                // Devolver la lista de nombres
-                return top5Nombres;
+                Collections.sort(calificacionesOrdenadas, Collections.reverseOrder());
+                // Devolver la lista de calificaciones ordenadas
+                insertionSort(calificacionesOrdenadas);
+                return calificacionesOrdenadas;
 
             } else {
                 System.out.println("Error cargando el documento XML.");
@@ -314,40 +325,127 @@ public class XML {
         return null;
     }
 
-    private static String obtenerNombrePorID(String ID, Document document) {
-        NodeList empleados = document.getElementsByTagName("Empleado");
+    public static List<String> obtenerCalificacionesConNombresOrdenados() {
+        try {
+            // Cargar el documento XML desde un archivo
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
 
-        for (int i = 0; i < empleados.getLength(); i++) {
-            Node empleado = empleados.item(i);
-            if (empleado.getNodeType() == Node.ELEMENT_NODE) {
-                Element empleadoElement = (Element) empleado;
-                String empleadoID = obtenerTextoDeElemento(empleadoElement, "ID");
+            // Verificar que el documento no sea nulo antes de continuar
+            if (document != null) {
+                // Obtener la lista de empleados
+                NodeList empleados = document.getElementsByTagName("Empleado");
 
-                if (empleadoID.equals(ID)) {
-                    // Encontrado el empleado con el ID, obtener el nombre
-                    return obtenerTextoDeElemento(empleadoElement, "nombre");
+                // Crear una lista para almacenar objetos Empleado con Calificacion y Nombre
+                List<Empleado> listaEmpleados = new ArrayList<>();
+
+                // Iterar sobre los empleados y agregarlos a la lista
+                for (int i = 0; i < empleados.getLength(); i++) {
+                    Node empleado = empleados.item(i);
+                    if (empleado.getNodeType() == Node.ELEMENT_NODE) {
+                        Element empleadoElement = (Element) empleado;
+                        String nombre = obtenerTextoDeElemento(empleadoElement, "nombre");
+                        String calificacion = obtenerTextoDeElemento(empleadoElement, "Calificacion");
+
+                        // Agregar el nombre y la calificación a la lista
+                        listaEmpleados.add(new Empleado(nombre, calificacion));
+                    }
                 }
+
+                // Implementar Selection Sort para ordenar la lista de calificaciones en orden
+                // descendente
+                int n = listaEmpleados.size();
+                for (int i = 0; i < n - 1; i++) {
+                    int maxIndex = i;
+                    for (int j = i + 1; j < n; j++) {
+                        if (listaEmpleados.get(j).getCalificacion()
+                                .compareTo(listaEmpleados.get(maxIndex).getCalificacion()) > 0) {
+                            maxIndex = j;
+                        }
+                    }
+                    // Intercambiar los elementos
+                    Empleado temp = listaEmpleados.get(maxIndex);
+                    listaEmpleados.set(maxIndex, listaEmpleados.get(i));
+                    listaEmpleados.set(i, temp);
+                }
+
+                // Crear una lista para almacenar las calificaciones ordenadas con nombres
+                List<String> calificacionesConNombresOrdenados = new ArrayList<>();
+
+                // Obtener las calificaciones ordenadas con nombres
+                for (Empleado emp : listaEmpleados) {
+                    calificacionesConNombresOrdenados.add(emp.getNombre() + ": " + emp.getCalificacion());
+                }
+
+                return calificacionesConNombresOrdenados;
+
+            } else {
+                System.out.println("Error cargando el documento XML.");
             }
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
         }
 
-        return null; // Si no se encuentra el nombre para el ID
+        return null;
     }
 
-    private static class Empleado {
-        private String ID;
-        private String calificacion;
+    // Crear una nueva lista para almacenar los números
+    public static void insertionSort(List<String> calificacionesOrdenadas) {
+        int n = calificacionesOrdenadas.size();
 
-        public Empleado(String ID, String calificacion) {
-            this.ID = ID;
+        // Crear una nueva lista para almacenar los números
+        List<Double> numeros = new ArrayList<>();
+
+        // Convertir la lista de cadenas a una lista de números
+        for (String calificacion : calificacionesOrdenadas) {
+            numeros.add(Double.parseDouble(calificacion));
+        }
+
+        for (int i = 1; i < n; ++i) {
+            double key = numeros.get(i);
+            int j = i - 1;
+
+            // Mover los elementos de arr[0..i-1], que son menores que key,
+            // a una posición adelante de su posición actual (orden de mayor a menor)
+            while (j >= 0 && numeros.get(j) < key) {
+                numeros.set(j + 1, numeros.get(j));
+                j = j - 1;
+            }
+            numeros.set(j + 1, key);
+        }
+
+        // Asignar los elementos ordenados al ArrayList original
+        for (int i = 0; i < n; ++i) {
+            calificacionesOrdenadas.set(i, String.valueOf(numeros.get(i)));
+        }
+    }
+
+    // Método para imprimir el array
+    private static class Empleado {
+        private String nombre;
+        private String calificacion;
+        private String calificacion2;
+
+        public Empleado(String nombre, String calificacion) {
+            this.nombre = nombre;
             this.calificacion = calificacion;
         }
 
-        public String getID() {
-            return ID;
+        public Empleado(String calificacion2) {
+            this.calificacion2 = calificacion2;
+        }
+
+        public String getNombre() {
+            return nombre;
         }
 
         public String getCalificacion() {
             return calificacion;
         }
+
+        public String getCalificacion2() {
+            return calificacion2;
+        }
     }
+
 }
