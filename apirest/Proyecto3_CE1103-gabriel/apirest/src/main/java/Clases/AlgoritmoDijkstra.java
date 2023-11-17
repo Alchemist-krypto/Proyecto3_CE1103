@@ -74,9 +74,9 @@ public class AlgoritmoDijkstra {
 
     /**
      * Implementación del algoritmo de Dijkstra para encontrar el camino más corto en un grafo.
-     * Este método inicializa el proceso y gestiona la visualización del recorrido.
+     * 
      */
-    public void dijkstra() {
+    public void calcularCaminoMasCorto() {
         // Inicializa los nodos del grafo
         for (int i = 0; i < tope; i++) {
             nodos[i] = new Nodo();
@@ -125,7 +125,12 @@ public class AlgoritmoDijkstra {
 
             subTope++;
         } while (subTope < tope + 1);
-
+    }
+    /**
+     * 
+     * Este método inicializa el proceso y gestiona la visualización del recorrido.
+     */
+    public void realizarAnimacion() {
         List<Nodo> camino = obtenerCamino();
         // Dibuja el camino completo en azul antes de comenzar la animación
         for (int i = 0; i < camino.size() - 1; i++) {
