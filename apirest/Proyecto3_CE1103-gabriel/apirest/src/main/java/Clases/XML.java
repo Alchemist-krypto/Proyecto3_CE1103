@@ -458,6 +458,46 @@ public class XML {
         return false; // Si hay algún error, devolver falso
     }
 
+    public static boolean empleadoExisteEnXML(String id, String nombre) {
+        try {
+            // Cargar el documento XML desde un archivo
+            Document document = cargarDesdeArchivo("apirest\\\\src\\\\main\\\\java\\\\XML\\\\registro.xml");
+
+            // Verificar que el documento no sea nulo antes de continuar
+            if (document != null) {
+                // Obtener la lista de empleados
+                NodeList empleados = document.getElementsByTagName("Empleado");
+
+                // Iterar sobre los empleados y verificar si el ID y Nombre coinciden
+                for (int i = 0; i < empleados.getLength(); i++) {
+                    Node empleado = empleados.item(i);
+                    if (empleado.getNodeType() == Node.ELEMENT_NODE) {
+                        Element empleadoElement = (Element) empleado;
+                        String empleadoId = obtenerTextoDeElemento(empleadoElement, "ID");
+                        String empleadoNombre = obtenerTextoDeElemento(empleadoElement, "nombre");
+
+                        // Comparar el ID y el Nombre actual con los proporcionados
+                        if (empleadoId.equals(id) && empleadoNombre.equals(nombre)) {
+                            return true; // ID y Nombre encontrados en un empleado
+                        }
+                    }
+                }
+
+                // Si llegamos aquí, el ID y el Nombre no se encontraron juntos en ningún
+                // empleado
+                return false;
+
+            } else {
+                System.out.println("Error cargando el documento XML.");
+            }
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Si hay algún error, devolver falso
+    }
+
     // Método para imprimir el array
     private static class Empleado {
         private String nombre;
