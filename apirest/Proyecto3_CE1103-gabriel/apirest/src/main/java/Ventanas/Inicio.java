@@ -72,7 +72,8 @@ public class Inicio extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         MostrarCaminos = new javax.swing.JButton();
@@ -80,6 +81,7 @@ public class Inicio extends javax.swing.JFrame {
         ImgMapa = new javax.swing.JLabel();
         CalificacionesBoton = new javax.swing.JButton();
         TopBoton = new javax.swing.JButton();
+        Añadirboton = new javax.swing.JButton();
         EleccionDestino = new javax.swing.JComboBox<>();
         BuscarCamino = new javax.swing.JButton();
         EleccionOrigen = new javax.swing.JComboBox<>();
@@ -128,7 +130,7 @@ public class Inicio extends javax.swing.JFrame {
                 CalificacionesBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(CalificacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 80, 40));
+        jPanel1.add(CalificacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 80, 40));
 
         TopBoton.setText("Top 5");
         TopBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -138,12 +140,23 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel1.add(TopBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 80, 40));
 
+        Añadirboton.setText("Añadir amigo");
+        Añadirboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AñadirbotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Añadirboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 80, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 850, 690));
 
         EleccionDestino.setBackground(new java.awt.Color(0, 153, 51));
         EleccionDestino.setFont(new java.awt.Font("Recinto", 1, 18));
         EleccionDestino.setForeground(new java.awt.Color(0, 0, 153));
-        EleccionDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  "Recinto", "Nodo 1", "Nodo 2", "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12", "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21", "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29"}));
+        EleccionDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recinto", "Nodo 1", "Nodo 2",
+                "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12",
+                "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21",
+                "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29" }));
         EleccionDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EleccionDestinoActionPerformed(evt);
@@ -165,7 +178,10 @@ public class Inicio extends javax.swing.JFrame {
         EleccionOrigen.setBackground(new java.awt.Color(0, 153, 51));
         EleccionOrigen.setFont(new java.awt.Font("Recinto", 1, 18));
         EleccionOrigen.setForeground(new java.awt.Color(0, 0, 153));
-        EleccionOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  "Recinto", "Nodo 1", "Nodo 2", "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12", "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21", "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29"}));
+        EleccionOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recinto", "Nodo 1", "Nodo 2",
+                "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12",
+                "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21",
+                "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29" }));
         EleccionOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EleccionOrigenActionPerformed(evt);
@@ -257,7 +273,8 @@ public class Inicio extends javax.swing.JFrame {
         txtColorNodoRecorrido.setForeground(new java.awt.Color(51, 0, 204));
         txtColorNodoRecorrido.setText("Nodo Recorrido ---->");
         txtColorNodoRecorrido.setOpaque(true);
-        getContentPane().add(txtColorNodoRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 330, 40));
+        getContentPane().add(txtColorNodoRecorrido,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 330, 40));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 153));
         Fondo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -280,6 +297,10 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AñadirbotonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AñadirbotonActionPerformed
+        EnviarAmigo.main(new String[] {}); // TODO add your handling code here:
+    }// GEN-LAST:event_AñadirbotonActionPerformed
 
     private void EleccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EleccionDestinoActionPerformed
         BuscarCamino.setEnabled(true);
@@ -607,6 +628,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Añadirboton;
     private javax.swing.JButton BotonSalir;
     private javax.swing.JButton BuscarCamino;
     private javax.swing.JButton CalificacionesBoton;
