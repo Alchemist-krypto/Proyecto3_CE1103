@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><root>
     
-<Empleado><ID>1287</ID><nombre>Gabriel</nombre><direccion>dsd</direccion><Condicion>driver</Condicion><Calificacion>5</Calificacion>
+<Empleado><ID>1287</ID><nombre>Gabriel</nombre><direccion>dsd</direccion><Condicion>driver</Condicion><Calificacion>4.8</Calificacion>
 </Empleado><Empleado><ID>12344</ID><nombre>pepe</nombre><direccion>san jose</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>1212</ID><nombre>juan</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>3</Calificacion>
-</Empleado><Empleado><ID>1213</ID><nombre>jose</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>10</Calificacion>
-</Empleado><Empleado><ID>1214</ID><nombre>luis</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>100</Calificacion>
-</Empleado><Empleado><ID>1215</ID><nombre>pan</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>10022</Calificacion>
+</Empleado><Empleado><ID>1213</ID><nombre>jose</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
+</Empleado><Empleado><ID>1214</ID><nombre>luis</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
+</Empleado><Empleado><ID>1215</ID><nombre>pan</nombre><direccion>naranjo</direccion><Condicion>driver</Condicion><Calificacion>5</Calificacion>
 </Empleado><Empleado><ID>2134</ID><nombre>Fabricio</nombre><direccion>Cartago</direccion><Condicion>driver</Condicion><Calificacion>2</Calificacion>
 </Empleado><Empleado><ID>2134</ID><nombre>Fabricio</nombre><direccion>Cartago</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
-</Empleado><Empleado><ID>3456</ID><nombre>Uraraka</nombre><direccion>San Jose</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
+</Empleado><Empleado><ID>3456</ID><nombre>Uraraka</nombre><direccion>San Jose</direccion><Condicion>driver</Condicion><Calificacion>2.7</Calificacion>
 </Empleado><Empleado><ID>3345</ID><nombre>Fabricio</nombre><direccion>Nodo 3</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>3346</ID><nombre>Raul</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>2345</ID><nombre>FAnboy</nombre><direccion>Nodo 4</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
@@ -34,11 +34,12 @@
 </Empleado><Empleado><ID>9999</ID><nombre>Carlos</nombre><direccion>Nodo 17</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>9999</ID><nombre>Carlos</nombre><direccion>Nodo 17</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>9998</ID><nombre>Carlos</nombre><direccion>Nodo 17</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
-</Empleado><Empleado><ID>2094</ID><nombre>Wtoi</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>1000</Calificacion>
+</Empleado><Empleado><ID>2094</ID><nombre>Wtoi</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>5437</ID><nombre>Wonka</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>3095</ID><nombre>Juan CArlos</nombre><direccion>Nodo 14</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>2985</ID><nombre>Gier</nombre><direccion>Nodo 9</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>2093</ID><nombre>Tifani</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>0395</ID><nombre>Edipo</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
 </Empleado><Empleado><ID>1395</ID><nombre>Edipo</nombre><direccion>Recinto</direccion><Condicion>driver</Condicion><Calificacion>0</Calificacion>
+</Empleado><Empleado><ID>6767</ID><nombre>Juan antonito</nombre><direccion>Nodo 3</direccion><Condicion>driver</Condicion><Calificacion>1</Calificacion>
 </Empleado></root>

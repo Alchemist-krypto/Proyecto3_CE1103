@@ -222,10 +222,10 @@ public class Top5 extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public static void PonerNombre() {
-        Chofer1.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(4));
-        Chofer2.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(3));
+        Chofer1.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(0));
+        Chofer2.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(1));
         Chofer3.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(2));
-        Chofer4.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(1));
-        Chofer5.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(0));
+        Chofer4.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(3));
+        Chofer5.setText(Clases.XML.obtenerCalificacionesConNombresOrdenados().get(4));
     }
 }

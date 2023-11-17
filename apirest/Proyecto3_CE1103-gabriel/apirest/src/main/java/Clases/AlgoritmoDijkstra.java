@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane; // Importa JOptionPane
 
-
 public class AlgoritmoDijkstra {
 
     private final DatosGraficos arboles;
@@ -53,7 +52,8 @@ public class AlgoritmoDijkstra {
 
         jPanel1.paint(jPanel1.getGraphics());
         PintarFiguras(tope, arboles);
-        PintanrDibujos.seleccionNodo(jPanel1.getGraphics(), arboles.getCordeX(origen), arboles.getCordeY(origen), null, Color.GREEN);
+        PintanrDibujos.seleccionNodo(jPanel1.getGraphics(), arboles.getCordeX(origen), arboles.getCordeY(origen), null,
+                Color.GREEN);
 
         nodos[origen].setVisitado(true);
         nodos[origen].setNombre(origen);
@@ -67,7 +67,8 @@ public class AlgoritmoDijkstra {
                 if (arboles.getmAdyacencia(j, origen) == 1) {
                     subtotalAcumulado = nodos[origen].getAcumulado() + arboles.getmCoeficiente(j, origen);
 
-                    if (subtotalAcumulado <= nodos[j].getAcumulado() && nodos[j].isVisitado() && !nodos[j].isEtiqueta()) {
+                    if (subtotalAcumulado <= nodos[j].getAcumulado() && nodos[j].isVisitado()
+                            && !nodos[j].isEtiqueta()) {
                         nodos[j].setAcumulado(subtotalAcumulado);
                         nodos[j].setVisitado(true);
                         nodos[j].setNombre(j);
@@ -92,7 +93,7 @@ public class AlgoritmoDijkstra {
 
             subTope++;
         } while (subTope < tope + 1);
-        
+
         List<Nodo> camino = obtenerCamino();
         // Dibuja el camino completo en azul antes de comenzar la animación
         for (int i = 0; i < camino.size() - 1; i++) {
@@ -100,10 +101,10 @@ public class AlgoritmoDijkstra {
             Nodo siguienteNodo = camino.get(i + 1);
 
             PintanrDibujos.pinta_Camino(jPanel1.getGraphics(),
-                arboles.getCordeX(nodoActual.getNombre()),
-                arboles.getCordeY(nodoActual.getNombre()),
-                arboles.getCordeX(siguienteNodo.getNombre()),
-                arboles.getCordeY(siguienteNodo.getNombre()), Color.BLUE);
+                    arboles.getCordeX(nodoActual.getNombre()),
+                    arboles.getCordeY(nodoActual.getNombre()),
+                    arboles.getCordeX(siguienteNodo.getNombre()),
+                    arboles.getCordeY(siguienteNodo.getNombre()), Color.BLUE);
         }
         // Calcula el tiempo total del recorrido en milisegundos
         long tiempoTotalRecorrido = (long) (getAcumulado() * 1000);
@@ -119,8 +120,10 @@ public class AlgoritmoDijkstra {
 
             int pasos = 10;
             for (int paso = 1; paso <= pasos; paso++) {
-                double dx = (arboles.getCordeX(siguienteNodo.getNombre()) - arboles.getCordeX(nodoActual.getNombre())) / (double) pasos;
-                double dy = (arboles.getCordeY(siguienteNodo.getNombre()) - arboles.getCordeY(nodoActual.getNombre())) / (double) pasos;
+                double dx = (arboles.getCordeX(siguienteNodo.getNombre()) - arboles.getCordeX(nodoActual.getNombre()))
+                        / (double) pasos;
+                double dy = (arboles.getCordeY(siguienteNodo.getNombre()) - arboles.getCordeY(nodoActual.getNombre()))
+                        / (double) pasos;
                 int xIntermedio = arboles.getCordeX(nodoActual.getNombre()) + (int) (dx * paso);
                 int yIntermedio = arboles.getCordeY(nodoActual.getNombre()) + (int) (dy * paso);
 
@@ -134,22 +137,22 @@ public class AlgoritmoDijkstra {
                 PintarFiguras(tope, arboles);
                 PintanrDibujos.pinta_Auto(jPanel1.getGraphics(), xIntermedio - 10, yIntermedio - 10, null);
                 // Redibuja el grafo, el camino en azul y el auto en la nueva posición
-            PintarFiguras(tope, arboles);
+                PintarFiguras(tope, arboles);
 
-            // Redibuja el camino en azul
-            for (int j = 0; j < camino.size() - 1; j++) {
-                Nodo nodo = camino.get(j);
-                Nodo nodoSig = camino.get(j + 1);
+                // Redibuja el camino en azul
+                for (int j = 0; j < camino.size() - 1; j++) {
+                    Nodo nodo = camino.get(j);
+                    Nodo nodoSig = camino.get(j + 1);
 
-                PintanrDibujos.pinta_Camino(jPanel1.getGraphics(),
-                    arboles.getCordeX(nodo.getNombre()),
-                    arboles.getCordeY(nodo.getNombre()),
-                    arboles.getCordeX(nodoSig.getNombre()),
-                    arboles.getCordeY(nodoSig.getNombre()), Color.BLUE);
-            }
+                    PintanrDibujos.pinta_Camino(jPanel1.getGraphics(),
+                            arboles.getCordeX(nodo.getNombre()),
+                            arboles.getCordeY(nodo.getNombre()),
+                            arboles.getCordeX(nodoSig.getNombre()),
+                            arboles.getCordeY(nodoSig.getNombre()), Color.BLUE);
+                }
 
-            // Dibuja el auto en la nueva posición
-            PintanrDibujos.pinta_Auto(jPanel1.getGraphics(), xIntermedio - 10, yIntermedio - 10, null);
+                // Dibuja el auto en la nueva posición
+                PintanrDibujos.pinta_Auto(jPanel1.getGraphics(), xIntermedio - 10, yIntermedio - 10, null);
                 try {
                     Thread.sleep(tiempoPorPaso);
                 } catch (InterruptedException ex) {
@@ -157,7 +160,6 @@ public class AlgoritmoDijkstra {
                 }
             }
             // Al finalizar la animación, muestra un cuadro de diálogo
-            JOptionPane.showMessageDialog(jPanel1, "Viaje finalizado!\nPuede Calificar al conductor", "Fin del Viaje", JOptionPane.INFORMATION_MESSAGE);
         }
 
         PintarFiguras(tope, arboles);
@@ -166,6 +168,12 @@ public class AlgoritmoDijkstra {
         }
 
         Nodo nodoFinal = camino.get(camino.size() - 1);
-        PintanrDibujos.pinta_Auto(jPanel1.getGraphics(), arboles.getCordeX(nodoFinal.getNombre()) - 10, arboles.getCordeY(nodoFinal.getNombre()) - 10, String.valueOf(nodoFinal.getNombre()));
+        PintanrDibujos.pinta_Auto(jPanel1.getGraphics(), arboles.getCordeX(nodoFinal.getNombre()) - 10,
+                arboles.getCordeY(nodoFinal.getNombre()) - 10, String.valueOf(nodoFinal.getNombre()));
+
+        JOptionPane.showMessageDialog(jPanel1, "Viaje finalizado!\nPuede Calificar al conductor", "Fin del Viaje",
+                JOptionPane.INFORMATION_MESSAGE);
+
     }
+
 }

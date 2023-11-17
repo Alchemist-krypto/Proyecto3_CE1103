@@ -73,7 +73,7 @@ public class Inicio extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         MostrarCaminos = new javax.swing.JButton();
@@ -153,10 +153,7 @@ public class Inicio extends javax.swing.JFrame {
         EleccionDestino.setBackground(new java.awt.Color(0, 153, 51));
         EleccionDestino.setFont(new java.awt.Font("Recinto", 1, 18));
         EleccionDestino.setForeground(new java.awt.Color(0, 0, 153));
-        EleccionDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recinto", "Nodo 1", "Nodo 2",
-                "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12",
-                "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21",
-                "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29" }));
+        EleccionDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  "Recinto", "Nodo 1", "Nodo 2", "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12", "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21", "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29"}));
         EleccionDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EleccionDestinoActionPerformed(evt);
@@ -178,10 +175,7 @@ public class Inicio extends javax.swing.JFrame {
         EleccionOrigen.setBackground(new java.awt.Color(0, 153, 51));
         EleccionOrigen.setFont(new java.awt.Font("Recinto", 1, 18));
         EleccionOrigen.setForeground(new java.awt.Color(0, 0, 153));
-        EleccionOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recinto", "Nodo 1", "Nodo 2",
-                "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12",
-                "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21",
-                "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29" }));
+        EleccionOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  "Recinto", "Nodo 1", "Nodo 2", "Nodo 3", "Nodo 4", "Nodo 5", "Nodo 6", "Nodo 7", "Nodo 8", "Nodo 9", "Nodo 10", "Nodo 11", "Nodo 12", "Nodo 13", "Nodo 14", "Nodo 15", "Nodo 16", "Nodo 17", "Nodo 18", "Nodo 19", "Nodo 20", "Nodo 21", "Nodo 22", "Nodo 23", "Nodo 24", "Nodo 25", "Nodo 26", "Nodo 27", "Nodo 28", "Nodo 29"}));
         EleccionOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EleccionOrigenActionPerformed(evt);
@@ -273,8 +267,7 @@ public class Inicio extends javax.swing.JFrame {
         txtColorNodoRecorrido.setForeground(new java.awt.Color(51, 0, 204));
         txtColorNodoRecorrido.setText("Nodo Recorrido ---->");
         txtColorNodoRecorrido.setOpaque(true);
-        getContentPane().add(txtColorNodoRecorrido,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 330, 40));
+        getContentPane().add(txtColorNodoRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 330, 40));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 153));
         Fondo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
